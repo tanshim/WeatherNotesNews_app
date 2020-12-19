@@ -9,10 +9,11 @@ interface NotesContract {
 
     interface NotesPresenter: BasePresenter {
         fun onViewCreated(context: Context)
+        suspend fun deleteNote(note: Note)
     }
 
     interface NotesView: BaseView<NotesPresenter> {
-        fun setNotesList(notes: List<Note>)
+        fun setNotesList(notes: MutableList<Note>)
     }
 
 }

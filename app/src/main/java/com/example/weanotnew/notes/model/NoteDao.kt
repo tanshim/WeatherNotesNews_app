@@ -12,5 +12,5 @@ interface NoteDao {
     suspend fun deleteNote(item: Note)
 
     @Query("SELECT * FROM notes_tb")
-    fun getAllNotes(): List<Note>
+    fun getAllNotes(): MutableList<Note>
 }

@@ -1,8 +1,9 @@
 package com.example.weanotnew.notes.model
 
 import com.example.weanotnew.model.AppDatabase
+import javax.inject.Inject
 
-class NoteRepository(private val db: AppDatabase) {
+class NoteRepository @Inject constructor(private val db: AppDatabase) {
 
     suspend fun upsertNote(item: Note) = db.noteDao().upsertNote(item)
 

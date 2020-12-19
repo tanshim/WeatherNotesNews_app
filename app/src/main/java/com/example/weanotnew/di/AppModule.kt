@@ -21,19 +21,18 @@ class AppModule(private val app: Application) {
     @Provides
     @Singleton
     fun provideDb(context: Context): AppDatabase {
-        return Room.databaseBuilder(context, AppDatabase::class.java, DB_NAME)
-            .build()
+        return AppDatabase.getInstance(context)
     }
 
-    @Provides
-    @Singleton
-    fun provideNoteRepository(db: AppDatabase): NoteRepository {
-        return NoteRepository(db)
-    }
+//    @Provides
+//    @Singleton
+//    fun provideNoteRepository(db: AppDatabase): NoteRepository {
+//        return NoteRepository(db)
+//    }
 
-    @Provides
-    @Singleton
-    fun provideNoteDao(db: AppDatabase): NoteDao{
-        return db.noteDao()
-    }
+//    @Provides
+//    @Singleton
+//    fun provideNoteDao(db: AppDatabase): NoteDao{
+//        return db.noteDao()
+//    }
 }

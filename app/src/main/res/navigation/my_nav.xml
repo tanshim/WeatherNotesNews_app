@@ -8,7 +8,6 @@
     <fragment
         android:id="@+id/notesFragment"
         android:name="com.example.weanotnew.notes.ui.notes.NotesFragment"
-        android:label="Notes"
         tools:layout="@layout/fragment_notes" >
         <action
             android:id="@+id/action_notesFragment_to_addNoteFragment"
@@ -16,13 +15,11 @@
     </fragment>
     <fragment
         android:id="@+id/weatherFragment"
-        android:name="com.example.weanotnew.weather.weatherFragment"
-        android:label="Weather"
+        android:name="com.example.weanotnew.weather.ui.WeatherFragment"
         tools:layout="@layout/fragment_weather" />
     <fragment
         android:id="@+id/newsFragment"
         android:name="com.example.weanotnew.news.newsFragment"
-        android:label="News"
         tools:layout="@layout/fragment_news" >
         <action
             android:id="@+id/action_newsFragment_to_newsDetailFragment"
@@ -31,7 +28,6 @@
     <fragment
         android:id="@+id/addNoteFragment"
         android:name="com.example.weanotnew.notes.ui.addNote.AddNoteFragment"
-        android:label="Add new note"
         tools:layout="@layout/fragment_add_note" >
         <action
             android:id="@+id/action_addNoteFragment_to_notesFragment"
@@ -40,6 +36,5 @@
     <fragment
         android:id="@+id/newsDetailFragment"
         android:name="com.example.weanotnew.news.newsDetailFragment"
-        android:label="News detail"
         tools:layout="@layout/fragment_news_detail" />
 </navigation>

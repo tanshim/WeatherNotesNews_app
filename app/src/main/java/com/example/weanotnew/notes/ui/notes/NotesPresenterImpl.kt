@@ -10,8 +10,8 @@ import javax.inject.Inject
 
 class NotesPresenterImpl(view: NotesContract.NotesView) : NotesContract.NotesPresenter {
 
-    lateinit var db: AppDatabase
-    lateinit var repository: NoteRepository
+    private lateinit var db: AppDatabase
+    private lateinit var repository: NoteRepository
 
     private var view: NotesContract.NotesView? = view
 
@@ -19,8 +19,8 @@ class NotesPresenterImpl(view: NotesContract.NotesView) : NotesContract.NotesPre
 
         db = AppDatabase.getInstance(context)
         repository = NoteRepository(db)
-        val testNotes: List<Note> = db.noteDao().getAllNotes()
-        val notes: List<Note> = repository.getAllNotes()
+
+        val notes: MutableList<Note> = repository.getAllNotes() as MutableList<Note>
 
         view?.setNotesList(notes)
 
@@ -33,5 +33,9 @@ class NotesPresenterImpl(view: NotesContract.NotesView) : NotesContract.NotesPre
 
     override fun onDestroy() {
         this.view = null
+    }
+
+    override suspend fun deleteNote(note: Note) {
+        repository.deleteNote(note)
     }
 }

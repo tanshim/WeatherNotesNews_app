@@ -8,11 +8,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weanotnew.R
 import com.example.weanotnew.notes.model.Note
-import com.example.weanotnew.util.DATE
+
 
 class NoteAdapter(var context: Context): RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
-    private lateinit var notes: List<Note>
+    private lateinit var notes: MutableList<Note>
 
     init {
         notifyDataSetChanged()
@@ -27,7 +27,7 @@ class NoteAdapter(var context: Context): RecyclerView.Adapter<NoteAdapter.NoteVi
         val note = notes[position]
         holder.tvTitle.text = note.title
         holder.tvText.text = note.text
-        holder.tvDate.text = DATE
+        holder.tvDate.text = note.createTime
     }
 
     override fun getItemCount(): Int {
@@ -40,8 +40,14 @@ class NoteAdapter(var context: Context): RecyclerView.Adapter<NoteAdapter.NoteVi
         val tvDate = itemView.findViewById<TextView>(R.id.tvDate)
     }
 
-    fun setNotes(notes: List<Note>) {
+    fun setNotes(notes: MutableList<Note>) {
         this.notes = notes
         notifyDataSetChanged()
+    }
+
+    fun removeAt(position: Int): Note {
+        val note = notes[position]
+        notes.removeAt(position)
+        return note
     }
 }

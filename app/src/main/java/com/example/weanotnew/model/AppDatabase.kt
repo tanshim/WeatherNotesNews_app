@@ -8,7 +8,7 @@ import com.example.weanotnew.notes.model.Note
 import com.example.weanotnew.notes.model.NoteDao
 import com.example.weanotnew.util.DB_NAME
 
-@Database(entities = [Note::class], version = 1, exportSchema = false)
+@Database(entities = [Note::class], version = 2, exportSchema = false)
 abstract class AppDatabase: RoomDatabase() {
 
     companion object {
@@ -21,6 +21,7 @@ abstract class AppDatabase: RoomDatabase() {
             synchronized(LOCK) {
                 db?.let { return it }
                 val instance = Room.databaseBuilder(context, AppDatabase::class.java, DB_NAME)
+                    .fallbackToDestructiveMigration()
                     .build()
                 db = instance
                 return instance
