@@ -19,12 +19,8 @@
         tools:layout="@layout/fragment_weather" />
     <fragment
         android:id="@+id/newsFragment"
-        android:name="com.example.weanotnew.news.newsFragment"
-        tools:layout="@layout/fragment_news" >
-        <action
-            android:id="@+id/action_newsFragment_to_newsDetailFragment"
-            app:destination="@id/newsDetailFragment" />
-    </fragment>
+        android:name="com.example.weanotnew.news.ui.NewsFragment"
+        tools:layout="@layout/fragment_news" />
     <fragment
         android:id="@+id/addNoteFragment"
         android:name="com.example.weanotnew.notes.ui.addNote.AddNoteFragment"
@@ -33,8 +29,4 @@
             android:id="@+id/action_addNoteFragment_to_notesFragment"
             app:destination="@id/notesFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/newsDetailFragment"
-        android:name="com.example.weanotnew.news.newsDetailFragment"
-        tools:layout="@layout/fragment_news_detail" />
 </navigation>

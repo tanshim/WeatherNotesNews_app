@@ -2,21 +2,13 @@ package com.example.weanotnew.weather.ui
 
 import android.content.Context
 import android.util.Log
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.createDataStore
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.lifecycleScope
 import com.example.weanotnew.model.DataStoreRepository
 import com.example.weanotnew.util.API_KEY
 import com.example.weanotnew.weather.api.WeatherApiFactory
 import com.example.weanotnew.weather.model.CityResponse
 import com.example.weanotnew.weather.model.Main
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.single
-import kotlinx.coroutines.launch
+
 
 class WeatherPresenterImpl(view: WeatherContract.WeatherView, context: Context) :
     WeatherContract.WeatherPresenter {
@@ -34,7 +26,6 @@ class WeatherPresenterImpl(view: WeatherContract.WeatherView, context: Context) 
 
     override suspend fun onViewCreated() {
         val city = repoDataStore.getHomeCityFromDataStore().first()
-        Log.d("test07", "onViewCreated: read data store city: ${city}")
         loadWeather(city)
     }
 
@@ -57,7 +48,6 @@ class WeatherPresenterImpl(view: WeatherContract.WeatherView, context: Context) 
         if (main != null) {
             result = true
         }
-        Log.d("test07", "loadWeather result: $result")
         return result
     }
 

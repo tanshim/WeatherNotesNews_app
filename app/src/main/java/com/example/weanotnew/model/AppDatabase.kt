@@ -29,6 +29,5 @@ abstract class AppDatabase: RoomDatabase() {
         }
     }
 
-    // @TODO write dao
     abstract fun noteDao(): NoteDao
 }

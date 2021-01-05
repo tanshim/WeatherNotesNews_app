@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.navigation.Navigation
 import com.example.weanotnew.R
 import com.example.weanotnew.notes.model.Note
+import com.example.weanotnew.util.hideKeyboard
 
 
 class AddNoteFragment : Fragment(), AddNoteContract.AddNoteView {
@@ -20,11 +21,6 @@ class AddNoteFragment : Fragment(), AddNoteContract.AddNoteView {
     private lateinit var noteText: EditText
     private lateinit var buttonSaveNote: Button
     private lateinit var presenter: AddNoteContract.AddNotePresenter
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,6 +39,7 @@ class AddNoteFragment : Fragment(), AddNoteContract.AddNoteView {
             if (onSaveClicked(view.context)) {
                 Toast.makeText(activity, "Please, enter all fields", Toast.LENGTH_LONG).show()
             } else {
+                hideKeyboard()
                 Navigation.findNavController(view)
                     .navigate(R.id.action_addNoteFragment_to_notesFragment)
             }
@@ -57,6 +54,8 @@ class AddNoteFragment : Fragment(), AddNoteContract.AddNoteView {
 
         if (title.isNotEmpty() && text.isNotEmpty()) {
             presenter.saveNote(context, title, text)
+            noteTitle.text.clear()
+            noteText.text.clear()
             return false
         }
         return true

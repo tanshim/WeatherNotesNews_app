@@ -32,7 +32,6 @@ class NotesFragment : Fragment(), NotesContract.NotesView, CoroutineScope {
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.IO + job
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -56,7 +55,6 @@ class NotesFragment : Fragment(), NotesContract.NotesView, CoroutineScope {
         lifecycleScope.launch(Dispatchers.IO) {
             presenter.onViewCreated(view.context)
             if(notes.isNotEmpty()) {
-                Log.d("test01", "onCreateView notesList: $notes")
                 adapter.setNotes(notes)
                 adapter.notifyDataSetChanged()
                 recyclerView.adapter = adapter

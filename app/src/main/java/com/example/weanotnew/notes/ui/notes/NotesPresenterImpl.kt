@@ -16,15 +16,12 @@ class NotesPresenterImpl(view: NotesContract.NotesView) : NotesContract.NotesPre
     private var view: NotesContract.NotesView? = view
 
     private fun loadNotes(context: Context) {
-
         db = AppDatabase.getInstance(context)
         repository = NoteRepository(db)
 
         val notes: MutableList<Note> = repository.getAllNotes() as MutableList<Note>
 
         view?.setNotesList(notes)
-
-        Log.d("test01", "loadNotes: end of loadNotes() $notes")
     }
 
     override fun onViewCreated(context: Context) {
