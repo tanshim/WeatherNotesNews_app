@@ -1,4 +1,4 @@
-# WeatherNotesNews_app
+# WeaNotNew app (WeatherNotesNews)
 
 App with 3 screens with bottom navigation view.
 
