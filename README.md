@@ -1,8 +1,8 @@
 # WeaNotNew app (WeatherNotesNews)
 
-App with 3 screens with bottom navigation view.
+Single activity app with 3 screens with bottom navigation view.
 
-Notes saved to local db (Room). 
+Notes saved to local db. 
 
 Weather api from openweathermap.org, news api from newsapi.org
 
